@@ -1,0 +1,83 @@
+<div class="container" style="max-width: 1840px;">
+    <form [formGroup]="PaymentForm" (ngSubmit)="payment()">
+        <div class="row">
+            <div clss="col">
+                <h1 class="">Billing Address</h1>
+                <br><br>
+                <div class="form-group">
+                    <label><b>Name  : </b></label><br>
+                    <input type="text" class="form-control" style="width: 73%;" formControlName="name" placeholder="Enter name">
+                    <span class="error" style="color: red;" *ngIf="name.invalid && name.touched" >name is required</span>
+                </div>
+                <div class="form-group">
+                    <label><b>Email : </b></label><br>
+                    <input type="text" class="form-control" style="width: 73%;" formControlName="email" placeholder="Enter email">
+                    <span class="error" style="color: red;" *ngIf="email.invalid && email.touched" >email is required</span>
+                </div>
+                <div class="inputBox">
+                    <label><b>Address :</b></label><br>
+                    <input type="text" placeholder="House_no - street - Locality">
+                    
+                </div>
+                <div class="inputBox">
+                    <label><b>city :</b></label><br>
+                    <input type="text" placeholder="city name">
+                </div>
+                <div class="flex">
+                    <div class="inputBox">
+                        <label><b>State : </b></label><br>
+                        <input type="text" placeholder="Maharastra">
+                    </div>
+                    <div class="inputBox">
+                        <label> <b>Zip Code : </b></label><br>
+                        <input type="text" class="form-control" style="width: 73%;" formControlName="zipcode" placeholder="123 456">
+                        <span class="error" style="color: red;" *ngIf="zipcode.invalid && zipcode.touched" >number is required</span>
+                    </div>
+                    <div class="inputBox">
+                        <label> <b>Date : </b></label><br>
+                        <input type="date" placeholder="1/12/22">
+                    </div>
+                    
+                </div>
+            </div>
+<br><br><br>
+<div clss="col">
+    <h1 class="title">Payment</h1>
+    <div class="inputBox">
+        <label><b>Card accepted : </b></label><br>
+        <img src="data:image/png;base64,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" >
+    </div>
+    <div class="inputBox">
+        <label><b>Name on Card : </b></label><br>
+        <input type="text" class="form-control" style="width: 50%;" formControlName="nameoncard" placeholder="Enter name">
+        <span class="error" style="color: red;" *ngIf="nameoncard.invalid && nameoncard.touched" >name is required</span>
+    </div>
+    <div class="inputBox">
+        <label><b>Credit card no : </b></label><br>
+        <input type="text" class="form-control" style="width: 50%;" formControlName="creditno" placeholder=" credit card no ">
+        <span class="error" style="color: red;" *ngIf="creditno.invalid && creditno.touched" >number is required</span>
+    </div>
+    <div class="inputBox">
+        <label><b>Exp month : </b></label><br>
+        <input type="month" placeholder="april">
+    </div>
+    <div class="flex">
+        <div class="inputBox">
+            <label><b>Exp year : </b></label><br>
+            <input type="year" placeholder="2022">
+        </div>
+        <div class="inputBox">
+            <label> <b>CVV Number : </b></label><br>
+            <input type="password" class="form-control" style="width: 50%;" formControlName="cvv" placeholder=" cvv number">
+            <span class="error" style="color: red;" *ngIf="cvv.invalid && cvv.touched" >number is required</span>
+
+        </div>
+    </div>
+</div>
+</div>
+<br>
+   
+     <button [disabled]="PaymentForm.invalid" (click)="getName1()"    class="submit-btn" href="#">Proceed to checkout</button>
+
+</form>
+</div>
